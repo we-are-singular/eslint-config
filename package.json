@@ -1,17 +1,19 @@
 {
   "name": "@we-are-singular/eslint-config",
   "version": "1.0.3",
-  "type": "module",
   "description": "singular eslint stuff",
   "main": "dist/main.cjs",
   "module": "dist/main.mjs",
   "types": "types.d.ts",
   "files": [
     "dist/**",
-    "types.d.ts"
+    "types.d.ts",
+    "all.js"
   ],
   "scripts": {
-    "build": "rollup -c"
+    "build": "npm run build:lib && npm run build:all",
+    "build:lib": "rollup -c",
+    "build:all": "node -e \"require('fs').writeFileSync('all.js','module.exports = ' + JSON.stringify(require('./dist/main.cjs').presets.all,null, 2))\""
   },
   "repository": {
     "type": "git",
@@ -24,15 +26,15 @@
     "url": "https://github.com/we-are-singular/eslint-config/issues"
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.19.0",
-    "@typescript-eslint/parser": "^6.21.0",
+    "typescript": "*",
+    "eslint": "*",
     "deepmerge": "^4.3.1",
     "eslint-config-next": "13.1.2",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-turbo": "latest",
     "eslint-plugin-filenames-simple": "^0.9.0",
     "eslint-plugin-jest-dom": "^4.0.3",
-    "eslint-plugin-markdown": "^3.0.0",
+    "eslint-plugin-markdown": "^4.0.0",
     "eslint-plugin-mdx": "^2.0.5",
     "eslint-plugin-monorepo": "^0.3.2",
     "eslint-plugin-prettier": "*",
@@ -40,14 +42,17 @@
     "eslint-plugin-storybook": "^0.6.8",
     "eslint-plugin-testing-library": "^5.9.1",
     "eslint-plugin-vitest": "^0.0.19",
-    "eslint-plugin-vitest-globals": "^1.2.0"
+    "eslint-plugin-vitest-globals": "^1.2.0",
+    "@typescript-eslint/eslint-plugin": "^7.1.1",
+    "@typescript-eslint/parser": "^7.1.1"
   },
   "devDependencies": {
-    "eslint": "^7.32.0",
+    "eslint": "^8.57.0",
     "prettier": "3.2.5",
     "rollup": "^4.12.1"
   },
   "peerDependencies": {
-    "eslint": ">=7"
+    "typescript": ">=4.5",
+    "eslint": ">=8"
   }
 }

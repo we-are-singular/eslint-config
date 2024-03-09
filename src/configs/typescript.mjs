@@ -1,12 +1,8 @@
-
 /**
  * @type import('eslint').Linter.Config>
  */
 export default {
-  extends: [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-  ],
+  extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
   rules: {
     "import/no-anonymous-default-export": "off",
     "no-unused-vars": "off",

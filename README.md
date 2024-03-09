@@ -16,6 +16,10 @@ npm install --save-dev @we-are-singular/eslint-config
 
 This function is used to create an ESLint configuration object. it just deeply merges the provided arguments.
 
+### `extend()`
+
+This function is used to create an ESLint configuration object. it extends the presets.all configuration and merge the provided arguments.
+
 ### `presets`
 
 list of presets that can be used to create an ESLint configuration object.
@@ -54,4 +58,49 @@ module.exports = config(
     ],
   }
 )
+```
+
+## Example using extend()
+
+```javascript
+// .eslintrc.js
+
+const { extend } = require("@we-are-singular/eslint-config")
+
+module.exports = extend({
+  rules: {
+    "no-console": "warn",
+  },
+  overrides: [
+    // some overrides
+    overrides.vitestNode(["apps/backend", "packages/logger"]),
+
+    // your rules
+    {
+      files: ["*.test.ts", "*.test.tsx"],
+      rules: {
+        "no-console": "off",
+      },
+    },
+  ],
+})
+```
+
+## Example as ESLint preset
+
+```javascript
+// .eslintrc.js
+
+module.exports = extend({
+  extends: ["@we-are-singular/eslint-config/all"],
+  overrides: [
+    // your rules
+    {
+      files: ["*.test.ts", "*.test.tsx"],
+      rules: {
+        "no-console": "off",
+      },
+    },
+  ],
+})
 ```

@@ -1,4 +1,3 @@
-
 /**
  * Adds very strict variable naming rules.
  * @param {String[]} paths - The options object.

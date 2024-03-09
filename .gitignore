@@ -2,6 +2,8 @@ build/
 dist/
 node_modules/
 
+all.js
+
 .vscode/
 .npm/
 # Logs

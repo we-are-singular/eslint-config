@@ -1,11 +1,8 @@
-
 /**
  * @type import('eslint').Linter.Config>
  */
 export default {
-  extends: [
-    "plugin:react/recommended",
-  ],
+  extends: ["plugin:react/recommended"],
   rules: {
     "react/jsx-key": "off",
   },

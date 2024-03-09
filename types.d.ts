@@ -1,6 +1,7 @@
-import type { Linter, ConfigOverride, OverrideRules } from "eslint"
+import type { Linter, OverrideRules } from "eslint"
 
 export function config(...args: Array<Partial<Linter.Config>>): Linter.Config
+export function extend(...args: Array<Partial<Linter.Config>>): Linter.Config
 
 export const presets: {
   markdown: Linter.Config
