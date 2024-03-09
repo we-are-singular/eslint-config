@@ -41,7 +41,7 @@ export default function (paths) {
         },
         {
           selector: "objectLiteralProperty",
-          format: ["camelCase", "UPPER_CASE"],
+          format: ["camelCase", "UPPER_CASE", "PascalCase"],
           leadingUnderscore: "allow",
         },
         {
@@ -72,11 +72,20 @@ export default function (paths) {
             "Entity",
             "Subscriber",
             "Strategy",
-            "Type",
             "Mock",
+            // js
+            "Class",
+            "Schema",
+            "Object",
+            "Array",
+            "Type",
+            "Flag",
+            "Props",
+            "Options",
             // workers
             "Consumer",
             "Producer",
+            "Worker",
             // trpc
             "Router",
             "Input",
