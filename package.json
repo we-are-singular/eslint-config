@@ -11,9 +11,7 @@
     "all.js"
   ],
   "scripts": {
-    "build": "npm run build:lib && npm run build:all",
-    "build:lib": "rollup -c",
-    "build:all": "node -e \"require('fs').writeFileSync('all.js','module.exports = ' + JSON.stringify(require('./dist/main.cjs').presets.all,null, 2))\""
+    "build": "rollup -c"
   },
   "repository": {
     "type": "git",
@@ -48,9 +46,11 @@
     "typescript": ">=4.5"
   },
   "devDependencies": {
+    "@rollup/plugin-virtual": "^3.0.2",
     "eslint": "^8.57.0",
-    "prettier": "3.2.5",
-    "rollup": "^4.12.1"
+    "prettier": "^3.2.5",
+    "rollup": "^4.12.1",
+    "rollup-plugin-prettier": "^4.1.1"
   },
   "peerDependencies": {
     "eslint": ">=8",
