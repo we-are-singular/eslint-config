@@ -23,11 +23,10 @@
   "bugs": {
     "url": "https://github.com/we-are-singular/eslint-config/issues"
   },
-  "devDependencies": {
+  "dependencies": {
     "@typescript-eslint/eslint-plugin": "^6.19.0",
     "@typescript-eslint/parser": "^6.21.0",
     "deepmerge": "^4.3.1",
-    "eslint": "^7.32.0",
     "eslint-config-next": "13.1.2",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-turbo": "latest",
@@ -41,8 +40,14 @@
     "eslint-plugin-storybook": "^0.6.8",
     "eslint-plugin-testing-library": "^5.9.1",
     "eslint-plugin-vitest": "^0.0.19",
-    "eslint-plugin-vitest-globals": "^1.2.0",
+    "eslint-plugin-vitest-globals": "^1.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
     "prettier": "3.2.5",
     "rollup": "^4.12.1"
+  },
+  "peerDependencies": {
+    "eslint": ">=7"
   }
 }
