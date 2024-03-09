@@ -23,4 +23,5 @@ export default {
     "@typescript-eslint/no-array-constructor": "off",
   },
   plugins: ["@typescript-eslint"],
+  parser: "@typescript-eslint/parser",
 }
