@@ -4,7 +4,7 @@
  */
 export default {
   extends: [
-    "prettier",
+    "plugin:prettier/recommended",
   ],
   rules: {
     "prettier/prettier": "warn",

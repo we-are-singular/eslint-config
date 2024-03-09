@@ -14,7 +14,7 @@ export const presets: {
 }
 
 export const overrides: {
-  vitestNode: (paths: string[]) => ConfigOverride<OverrideRules>
-  vitestReact: (paths: string[]) => ConfigOverride<OverrideRules>
-  namingConvention: (paths: string[]) => ConfigOverride<OverrideRules>
+  vitestNode: (paths: string[]) => Linter.ConfigOverride<OverrideRules>
+  vitestReact: (paths: string[]) => Linter.ConfigOverride<OverrideRules>
+  namingConvention: (paths: string[]) => Linter.ConfigOverride<OverrideRules>
 }
