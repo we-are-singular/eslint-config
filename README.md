@@ -65,7 +65,7 @@ module.exports = config(
 ```javascript
 // .eslintrc.js
 
-const { extend } = require("@we-are-singular/eslint-config")
+const { extend, overrides } = require("@we-are-singular/eslint-config")
 
 module.exports = extend({
   rules: {
@@ -91,7 +91,9 @@ module.exports = extend({
 ```javascript
 // .eslintrc.js
 
-module.exports = extend({
+/** @type {import("eslint").Linter.Config} */
+module.exports = {
+  root: true,
   extends: ["@we-are-singular/eslint-config/all"],
   overrides: [
     // your rules
@@ -102,5 +104,5 @@ module.exports = extend({
       },
     },
   ],
-})
+}
 ```
