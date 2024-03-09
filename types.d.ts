@@ -11,6 +11,7 @@ export const presets: {
   react: Linter.Config
   storybook: Linter.Config
   typescript: Linter.Config
+  astro: Linter.Config
   all: Linter.Config
 }
 

@@ -3,6 +3,12 @@
  */
 export default {
   extends: ["plugin:astro/recommended"],
+  env: {
+    node: true,
+  },
+  globals: {
+    astroHTML: true,
+  },
   overrides: [
     {
       // Define the configuration for `.astro` file.
