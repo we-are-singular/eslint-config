@@ -7,6 +7,8 @@ import prettierConfig from "./src/configs/prettier.mjs"
 import reactConfig from "./src/configs/react.mjs"
 import storybookConfig from "./src/configs/storybook.mjs"
 import typescriptConfig from "./src/configs/typescript.mjs"
+import astroConfig from "./src/configs/astro.mjs"
+
 // eslint presets
 const presets = {
   markdown: markdownConfig,
@@ -16,6 +18,7 @@ const presets = {
   react: reactConfig,
   storybook: storybookConfig,
   typescript: typescriptConfig,
+  astro: astroConfig,
 }
 
 presets.all = merge.all(Object.values(presets))
