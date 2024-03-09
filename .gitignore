@@ -1,4 +1,10 @@
 build/
 dist/
 node_modules/
-./test.cjs
+
+.vscode/
+.npm/
+# Logs
+logs
+*.log
+npm-debug.log*
