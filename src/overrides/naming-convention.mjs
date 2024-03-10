@@ -1,9 +1,10 @@
 /**
  * Adds very strict variable naming rules.
  * @param {String[]} paths - The options object.
+ * @param {String[]} names - More names to be added to the filter.
  * @returns {Object} - The ESLint configuration object.
  */
-export default function (paths) {
+export default function (paths, names = []) {
   return {
     files: paths,
     rules: {
@@ -73,6 +74,7 @@ export default function (paths) {
             "Subscriber",
             "Strategy",
             "Mock",
+            "Decorator",
             // js
             "Class",
             "Schema",
@@ -94,15 +96,15 @@ export default function (paths) {
             "Query",
             "Subscription",
             "Resolver",
+            "Setup",
             // db
             "With",
             "Where",
-            "Setup",
             "DTO",
             "Seed",
             // custom
-            "Decorator",
-          ],
+            ...names,
+          ].filter(Boolean),
           format: ["PascalCase"],
         },
         {
@@ -110,7 +112,6 @@ export default function (paths) {
           format: ["UPPER_CASE"],
         },
       ],
-      "filenames-simple/naming-convention": ["error", { rule: "kebab-case" }],
     },
     plugins: ["filenames-simple"],
   }

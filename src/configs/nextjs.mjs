@@ -6,7 +6,7 @@ export default {
   rules: {
     "@next/next/no-html-link-for-pages": "off",
   },
-  plugins: ["monorepo", "react", "prettier", "@typescript-eslint"],
+  plugins: [],
   env: {
     node: true,
   },

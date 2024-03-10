@@ -26,11 +26,13 @@ presets.all = merge.all(Object.values(presets))
 import vitestNode from "./src/overrides/vitest-node.mjs"
 import vitestReact from "./src/overrides/vitest-react.mjs"
 import namingConvention from "./src/overrides/naming-convention.mjs"
+import fileNamingConvention from "./src/overrides/file-naming-convention.mjs"
 // override functions
 const overrides = {
   vitestNode,
   vitestReact,
   namingConvention,
+  fileNamingConvention,
 }
 
 /**
