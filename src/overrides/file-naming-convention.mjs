@@ -1,5 +1,5 @@
 /**
- * Adds very strict variable naming rules.
+ * Adds very strict file naming rule for backend code.
  * @param {String[]} paths - The options object.
  * @param {Object} rules - The rules object to be merged.
  * @returns {Object} - The ESLint configuration object.
@@ -8,10 +8,13 @@ export default function (paths, rules = {}) {
   return {
     files: paths,
     rules: {
-      "filenames-simple/naming-convention": ["error", { rule: "kebab-case" }],
-      "filenames-simple/named-export": ["error", "singular"],
-      ...rules,
+      files: ["apps/worker/**/*.ts"],
+      rules: {
+        "filename-rules/match": [2, /^([a-z]+-)*[a-z]+(?:\..*)?$/],
+        "filename-rules/not-match": [2, "PascalCase"],
+        ...rules,
+      },
     },
-    plugins: ["filenames-simple"],
+    plugins: ["filename-rules"],
   }
 }
