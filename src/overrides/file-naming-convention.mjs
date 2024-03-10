@@ -8,12 +8,9 @@ export default function (paths, rules = {}) {
   return {
     files: paths,
     rules: {
-      files: ["apps/worker/**/*.ts"],
-      rules: {
-        "filename-rules/match": [2, /^([a-z]+-)*[a-z]+(?:\..*)?$/],
-        "filename-rules/not-match": [2, "PascalCase"],
-        ...rules,
-      },
+      "filename-rules/match": [2, /^([a-z]+-)*[a-z]+(?:\..*)?$/],
+      "filename-rules/not-match": [2, "PascalCase"],
+      ...rules,
     },
     plugins: ["filename-rules"],
   }
