@@ -43,6 +43,7 @@
     "eslint-plugin-testing-library": "^5.9.1",
     "eslint-plugin-vitest": "^0.0.19",
     "eslint-plugin-vitest-globals": "^1.2.0",
+    "eslint-plugin-yml": "^1.12.2",
     "typescript": ">=4.5"
   },
   "devDependencies": {

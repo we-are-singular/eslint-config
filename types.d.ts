@@ -12,6 +12,7 @@ export const presets: {
   storybook: Linter.Config
   typescript: Linter.Config
   astro: Linter.Config
+  yaml: Linter.Config
   all: Linter.Config
 }
 

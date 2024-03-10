@@ -113,6 +113,5 @@ export default function (paths, names = []) {
         },
       ],
     },
-    plugins: ["filenames-simple"],
   }
 }
