@@ -106,3 +106,12 @@ module.exports = {
   ],
 }
 ```
+
+# Releasing a new version
+
+To release a new version, you need to have access to the `@we-are-singular` npm organization.
+
+1. Make sure you are logged in to the `@we-are-singular` npm organization by running `npm login` and following the instructions.
+2. Run `npm run release` to trigger the release process.
+3. Follow the instructions and make sure to select the correct version type.
+4. The release will be published to npm and github automatically.
