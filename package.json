@@ -61,10 +61,21 @@
   },
   "release-it": {
     "hooks": {
-      "before:init": "npm run build"
+      "before:init": [
+        "git pull -r",
+        "npm run build"
+      ],
+      "after:bump": "npx auto-changelog -p"
+    },
+    "git": {
+      "requireBranch": "main",
+      "commitMessage": "Release: ${version}"
     },
     "github": {
       "release": true
+    },
+    "npm": {
+      "publish": true
     }
   }
 }
