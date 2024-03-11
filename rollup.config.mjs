@@ -20,7 +20,7 @@ export default [
       virtual({
         all:
           "module.exports = " +
-          JSON.stringify((await import("./dist/main.mjs")).default.presets.all, null, 2),
+          JSON.stringify((await import("./main.mjs")).default.presets.all, null, 2),
       }),
       prettier({
         parser: "babel",

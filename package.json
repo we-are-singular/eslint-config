@@ -11,7 +11,8 @@
     "all.js"
   ],
   "scripts": {
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "release": "release-it"
   },
   "repository": {
     "type": "git",
@@ -50,11 +51,20 @@
     "@rollup/plugin-virtual": "^3.0.2",
     "eslint": "^8.57.0",
     "prettier": "^3.2.5",
+    "release-it": "^17.1.1",
     "rollup": "^4.12.1",
     "rollup-plugin-prettier": "^4.1.1"
   },
   "peerDependencies": {
     "eslint": ">=8",
     "typescript": ">=4.5"
+  },
+  "release-it": {
+    "hooks": {
+      "before:init": "npm run build"
+    },
+    "github": {
+      "release": true
+    }
   }
 }
