@@ -29,12 +29,14 @@ import vitestNode from "./src/overrides/vitest-node.mjs"
 import vitestReact from "./src/overrides/vitest-react.mjs"
 import namingConvention from "./src/overrides/naming-convention.mjs"
 import fileNamingConvention from "./src/overrides/file-naming-convention.mjs"
+import typescript from "./src/overrides/typescript.mjs"
 // override functions
 const overrides = {
   vitestNode,
   vitestReact,
   namingConvention,
   fileNamingConvention,
+  typescript,
 }
 
 /**
