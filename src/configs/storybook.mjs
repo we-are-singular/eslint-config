@@ -2,7 +2,6 @@
  * @type import('eslint').Linter.Config>
  */
 export default {
-  extends: ["plugin:mdx/recommended"],
   overrides: [
     {
       // MDX stories

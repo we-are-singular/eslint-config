@@ -2,10 +2,10 @@
  * @type import('eslint').Linter.Config>
  */
 export default {
-  extends: ["plugin:yml/standard"],
   overrides: [
     {
-      files: ["*.yaml", "*.yml"],
+      files: ["**/*.yml", "**/*.yaml"],
+      extends: ["plugin:yml/standard"],
       parser: "yaml-eslint-parser",
       // Options used with yaml-eslint-parser.
       parserOptions: {
