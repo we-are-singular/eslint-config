@@ -5,13 +5,7 @@ export default {
   extends: ["eslint:recommended"],
   overrides: [
     {
-      files: ["*.ts", "*.tsx", "*.d.ts"],
-      extends: ["plugin:@typescript-eslint/recommended"],
-      plugins: ["@typescript-eslint"],
-      parser: "@typescript-eslint/parser",
-      parserOptions: {
-        project: true,
-      },
+      files: ["*.js", "*.mjs", "*.cjs", "*.jsx", "*.ts", "*.tsx", "*.d.ts"],
       rules: {
         // disable non-typescript rules
         "import/no-anonymous-default-export": "off",
@@ -22,7 +16,17 @@ export default {
         "require-await": "off",
         "prefer-promise-reject-errors": "off",
         "no-throw-literal": "off",
-
+      },
+    },
+    {
+      files: ["*.ts", "*.tsx", "*.d.ts"],
+      extends: ["plugin:@typescript-eslint/recommended"],
+      plugins: ["@typescript-eslint"],
+      parser: "@typescript-eslint/parser",
+      parserOptions: {
+        project: true,
+      },
+      rules: {
         // off
         "@typescript-eslint/require-await": "off",
         "@typescript-eslint/no-var-requires": "off",
