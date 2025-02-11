@@ -19,7 +19,17 @@ export const presets: {
 export const overrides: {
   vitestNode: (paths: string[]) => Linter.ConfigOverride<OverrideRules>
   vitestReact: (paths: string[]) => Linter.ConfigOverride<OverrideRules>
-  namingConvention: (paths: string[], names?: string[]) => Linter.ConfigOverride<OverrideRules>
-  fileNamingConvention: (paths: string[], rules?: Linter.RulesRecord) => Linter.ConfigOverride<OverrideRules>
-  typescript: (paths: string[], config: Omit<Linter.ConfigOverride, "files">) => Linter.ConfigOverride<OverrideRules>
+  namingConvention: (
+    paths: string[],
+    names?: string[],
+    overrides: Record<string, string[]>
+  ) => Linter.ConfigOverride<OverrideRules>
+  fileNamingConvention: (
+    paths: string[],
+    rules?: Linter.RulesRecord
+  ) => Linter.ConfigOverride<OverrideRules>
+  typescript: (
+    paths: string[],
+    config: Omit<Linter.ConfigOverride, "files">
+  ) => Linter.ConfigOverride<OverrideRules>
 }
