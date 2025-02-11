@@ -20,10 +20,14 @@ export default function (paths, names = []) {
             match: false,
           },
         },
-
+        {
+          selector: "import",
+          format: ["PascalCase", "UPPER_CASE"],
+        },
         {
           selector: "variable",
           format: ["camelCase", "UPPER_CASE"],
+          leadingUnderscore: "allow",
         },
         {
           selector: "parameter",
@@ -44,6 +48,26 @@ export default function (paths, names = []) {
           selector: "objectLiteralProperty",
           format: ["camelCase", "UPPER_CASE", "PascalCase"],
           leadingUnderscore: "allow",
+        },
+        {
+          selector: "objectLiteralMethod",
+          format: ["camelCase", "UPPER_CASE"],
+          leadingUnderscore: "allow",
+        },
+        {
+          // ignore properties that require quotes
+          selector: [
+            "classProperty",
+            "objectLiteralProperty",
+            "typeProperty",
+            "classMethod",
+            "objectLiteralMethod",
+            "typeMethod",
+            "accessor",
+            "enumMember",
+          ],
+          format: null,
+          modifiers: ["requiresQuotes"],
         },
         {
           selector: "typeLike",
@@ -74,8 +98,10 @@ export default function (paths, names = []) {
             "Subscriber",
             "Strategy",
             "Mock",
+            "Spy",
             "Decorator",
             // js
+            "Function",
             "Class",
             "Schema",
             "Object",
@@ -84,6 +110,15 @@ export default function (paths, names = []) {
             "Flag",
             "Props",
             "Options",
+            "Config",
+            "Settings",
+            "Callback",
+            "Promise",
+            "Data",
+            "Value",
+            "Error",
+            "Map",
+            "Set",
             // workers
             "Consumer",
             "Producer",
