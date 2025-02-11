@@ -1,6 +1,6 @@
 {
   "name": "@we-are-singular/eslint-config",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "singular eslint stuff",
   "main": "dist/main.cjs",
   "module": "dist/main.mjs",
