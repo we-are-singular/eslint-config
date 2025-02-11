@@ -4,7 +4,7 @@
  * @param {String[]} names - More names to be added to the filter.
  * @returns {Object} - The ESLint configuration object.
  */
-export default function (paths, names = []) {
+export default function (paths, names = [], overrides = {}) {
   return {
     files: paths,
     rules: {
@@ -13,7 +13,7 @@ export default function (paths, names = []) {
         "error",
         {
           selector: "default",
-          format: ["camelCase"],
+          format: overrides.default ?? ["camelCase"],
           filter: {
             // you can expand this regex to add more allowed names
             regex: "^(Hashids)$",
@@ -22,36 +22,36 @@ export default function (paths, names = []) {
         },
         {
           selector: "import",
-          format: ["PascalCase", "UPPER_CASE"],
+          format: overrides.import ?? ["PascalCase", "UPPER_CASE"],
         },
         {
           selector: "variable",
-          format: ["camelCase", "UPPER_CASE"],
+          format: overrides.variable ?? ["camelCase", "UPPER_CASE"],
           leadingUnderscore: "allow",
         },
         {
           selector: "parameter",
-          format: ["camelCase"],
+          format: overrides.parameter ?? ["camelCase"],
           leadingUnderscore: "allow",
         },
         {
           selector: "enumMember",
-          format: ["UPPER_CASE", "PascalCase"],
+          format: overrides.enumMember ?? ["UPPER_CASE", "PascalCase"],
         },
         {
           selector: "memberLike",
           modifiers: ["private"],
-          format: ["camelCase"],
+          format: overrides.memberLike ?? ["camelCase"],
           leadingUnderscore: "allow",
         },
         {
           selector: "objectLiteralProperty",
-          format: ["camelCase", "UPPER_CASE", "PascalCase"],
+          format: overrides.objectLiteralProperty ?? ["camelCase", "UPPER_CASE", "PascalCase"],
           leadingUnderscore: "allow",
         },
         {
           selector: "objectLiteralMethod",
-          format: ["camelCase", "UPPER_CASE"],
+          format: overrides.objectLiteralMethod ?? ["camelCase", "UPPER_CASE"],
           leadingUnderscore: "allow",
         },
         {
@@ -140,11 +140,11 @@ export default function (paths, names = []) {
             // custom
             ...names,
           ].filter(Boolean),
-          format: ["PascalCase"],
+          format: overrides.typeLike ?? ["PascalCase"],
         },
         {
           selector: "typeParameter",
-          format: ["UPPER_CASE"],
+          format: overrides.typeParameter ?? ["PascalCase"],
         },
       ],
     },
