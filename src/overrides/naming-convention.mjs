@@ -30,6 +30,11 @@ export default function (paths, names = [], overrides = {}) {
           leadingUnderscore: "allow",
         },
         {
+          selector: "function",
+          format: overrides.function ?? ["camelCase", "PascalCase"],
+          leadingUnderscore: "allow",
+        },
+        {
           selector: "parameter",
           format: overrides.parameter ?? ["camelCase"],
           leadingUnderscore: "allow",
