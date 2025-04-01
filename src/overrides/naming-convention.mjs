@@ -142,6 +142,10 @@ export default function (paths, names = [], overrides = {}) {
             "Where",
             "DTO",
             "Seed",
+            "Row",
+            "Column",
+            "Table",
+            "Item",
             // custom
             ...names,
           ].filter(Boolean),
