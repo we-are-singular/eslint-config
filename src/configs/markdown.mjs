@@ -14,6 +14,8 @@ export default {
     {
       files: ["**/*.md/*"],
       rules: {
+        // disable most common rules
+        "no-console": "off",
         "no-undef": "off",
         "no-unused-vars": "off",
       },
