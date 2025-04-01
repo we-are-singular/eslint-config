@@ -7,6 +7,16 @@ export default {
       extends: ["plugin:markdown/recommended-legacy"],
       files: ["*.md"],
       processor: "markdown/markdown",
+      rules: {
+        "no-undef": "off",
+      },
+    },
+    {
+      files: ["**/*.md/*"],
+      rules: {
+        "no-undef": "off",
+        "no-unused-vars": "off",
+      },
     },
   ],
 }
