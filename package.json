@@ -2,6 +2,7 @@
   "name": "@we-are-singular/eslint-config",
   "version": "2.4.0",
   "description": "singular eslint stuff",
+  "type": "module",
   "main": "dist/main.cjs",
   "module": "dist/main.mjs",
   "types": "types.d.ts",
@@ -10,13 +11,11 @@
       "import": "./dist/main.mjs",
       "require": "./dist/main.cjs",
       "types": "./types.d.ts"
-    },
-    "./all": "./all.js"
+    }
   },
   "files": [
     "dist/**",
-    "types.d.ts",
-    "all.js"
+    "types.d.ts"
   ],
   "scripts": {
     "build": "rollup -c",
@@ -33,23 +32,20 @@
     "url": "https://github.com/we-are-singular/eslint-config/issues"
   },
   "dependencies": {
-    "@types/eslint": "^8",
-    "@typescript-eslint/eslint-plugin": "^7.18.0",
-    "@typescript-eslint/parser": "^7.18.0",
-    "deepmerge": "^4.3.1",
-    "eslint": "^8.0.0",
-    "eslint-config-next": "15.2.4",
-    "eslint-config-prettier": "^10.1.1",
+    "@typescript-eslint/eslint-plugin": "^8.31.0",
+    "@typescript-eslint/parser": "^8.31.0",
+    "eslint": "^9.25.1",
+    "eslint-config-next": "15.3.1",
+    "eslint-config-prettier": "^10.1.2",
     "eslint-config-turbo": "latest",
     "eslint-plugin-astro": "^1.3.1",
     "eslint-plugin-filename-rules": "^1.3.1",
     "eslint-plugin-jest-dom": "^5.5.0",
     "eslint-plugin-markdown": "^5.1.0",
-    "eslint-plugin-mdx": "^3.3.1",
+    "eslint-plugin-mdx": "^3.4.1",
     "eslint-plugin-monorepo": "^0.3.2",
-    "eslint-plugin-prettier": "^5.2.5",
-    "eslint-plugin-react": "^7.37.4",
-    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-prettier": "^5.2.6",
+    "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-storybook": "^0.12.0",
     "eslint-plugin-testing-library": "^7.1.1",
     "eslint-plugin-vitest": "^0.5.4",
@@ -58,15 +54,11 @@
     "typescript": ">=5"
   },
   "devDependencies": {
-    "@rollup/plugin-virtual": "^3.0.2",
-    "eslint": "^8.57.0",
     "prettier": "^3.5.3",
-    "release-it": "^18.1.2",
-    "rollup": "^4.38.0",
-    "rollup-plugin-prettier": "^4.1.2"
+    "release-it": "^19.0.1",
+    "rollup": "^4.40.0"
   },
   "peerDependencies": {
-    "eslint": ">=8<9",
     "typescript": ">=5"
   },
   "release-it": {
@@ -78,7 +70,7 @@
       "after:bump": "npx auto-changelog -p"
     },
     "git": {
-      "requireBranch": "main",
+      "requireBranch": "eslint9",
       "commitMessage": "Release: ${version}"
     },
     "github": {

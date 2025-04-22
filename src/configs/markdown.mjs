@@ -1,24 +1,23 @@
-/**
- * @type import('eslint').Linter.Config>
- */
-export default {
-  overrides: [
+import markdownPlugin from 'eslint-plugin-markdown';
+
+export default [
     {
-      extends: ["plugin:markdown/recommended-legacy"],
-      files: ["*.md"],
-      processor: "markdown/markdown",
-      rules: {
-        "no-undef": "off",
-      },
+        plugins: {
+            // @ts-ignore
+            markdown: markdownPlugin
+        }
     },
     {
-      files: ["**/*.md/*"],
-      rules: {
-        // disable most common rules
-        "no-console": "off",
-        "no-undef": "off",
-        "no-unused-vars": "off",
-      },
+        files: ["**/*.md"],
+        processor: "markdown/markdown"
     },
-  ],
-}
+    {
+      files: ['**/*.md/*'],
+        rules: {
+          'no-undef': 'off',
+          'no-unused-vars': 'off',
+            "no-console": "off",
+            "import/no-unresolved": "off"
+        }
+    }
+]

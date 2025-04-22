@@ -1,10 +1,14 @@
+import * as prettierPlugin from 'eslint-plugin-prettier/recommended';
+
 /**
- * @type import('eslint').Linter.Config>
+ * @type {import('eslint').Linter.Config[]}
  */
-export default {
-  extends: ["plugin:prettier/recommended"],
-  rules: {
-    "prettier/prettier": ["warn"],
+export default [
+  {
+    ...prettierPlugin,
+    rules: {
+      ...prettierPlugin.rules,
+      'prettier/prettier': ['warn'],
+    },
   },
-  plugins: ["prettier"],
-}
+];

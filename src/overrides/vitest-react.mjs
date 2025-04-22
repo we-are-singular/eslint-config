@@ -1,4 +1,9 @@
-import { findSpecFiles } from "../helpers.mjs"
+import vitestPlugin from 'eslint-plugin-vitest';
+import vitestGlobalsPlugin from 'eslint-plugin-vitest-globals';
+import jestDomPlugin from 'eslint-plugin-jest-dom';
+import testingLibraryPlugin from 'eslint-plugin-testing-library';
+import globals from 'globals';
+import { findSpecFiles } from '../helpers.mjs';
 
 /**
  * Returns the ESLint configuration for testing in libraries that use react/jest globals.
@@ -7,17 +12,27 @@ import { findSpecFiles } from "../helpers.mjs"
  */
 export default function (paths) {
   return {
-    // tests in libraries that use react
     files: findSpecFiles(paths),
+    plugins: {
+      vitest: vitestPlugin,
+      'vitest-globals': vitestGlobalsPlugin,
+      'jest-dom': jestDomPlugin,
+      'testing-library': testingLibraryPlugin,
+    },
     rules: {
-      "no-unused-vars": "off",
-      "@typescript-eslint/no-unused-vars": "off",
-      "@typescript-eslint/ban-ts-comment": "off",
+      ...vitestPlugin.configs.recommended.rules,
+      ...vitestGlobalsPlugin.configs.recommended.rules,
+      ...jestDomPlugin.configs.recommended.rules,
+      ...testingLibraryPlugin.configs.react.rules,
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': 'off',
+      '@typescript-eslint/ban-ts-comment': 'off',
     },
-    plugins: ["vitest", "vitest-globals", "jest-dom", "testing-library"],
-    env: {
-      jest: true,
-      "vitest-globals/env": true,
+    languageOptions: {
+      globals: {
+        ...globals.jest,
+        ...vitestGlobalsPlugin.environments.env.globals,
+      },
     },
-  }
+  };
 }

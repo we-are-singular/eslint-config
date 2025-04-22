@@ -1,19 +1,21 @@
+import reactPlugin from 'eslint-plugin-react';
+
 /**
- * @type import('eslint').Linter.Config>
+ * @type {import('eslint').Linter.Config[]}
  */
-export default {
-  extends: ["plugin:react/recommended", "plugin:react-hooks/recommended-legacy"],
-  rules: {
-    "react/jsx-key": "off",
-  },
-  plugins: ["react"],
-  overrides: [
-    {
-      // just plain .ts files
-      files: ["**/*.ts"],
-      rules: {
-        "react-hooks/rules-of-hooks": "off",
-      },
+export default [
+  {
+    plugins: {
+      react: reactPlugin,
     },
-  ],
-}
+    rules: {
+      'react/jsx-key': 'off',
+    },
+  },
+  {
+    files: ['**/*.ts'],
+    rules: {
+      'react-hooks/rules-of-hooks': 'off',
+    },
+  },
+];

@@ -1,4 +1,6 @@
-import { findSpecFiles } from "../helpers.mjs"
+import vitestPlugin from 'eslint-plugin-vitest';
+import vitestGlobalsPlugin from 'eslint-plugin-vitest-globals';
+import { findSpecFiles } from '../helpers.mjs';
 
 /**
  * Returns the ESLint configuration for testing in libraries that use node/browser globals.
@@ -7,18 +9,21 @@ import { findSpecFiles } from "../helpers.mjs"
  */
 export default function (paths) {
   return {
-    // tests in libraries that use node/browser globals
-    extends: ["plugin:vitest-globals/recommended"],
     files: findSpecFiles(paths),
+    plugins: {
+      vitest: vitestPlugin,
+      'vitest-globals': vitestGlobalsPlugin,
+    },
     rules: {
-      "no-unused-vars": "off",
-      "@typescript-eslint/no-unused-vars": "off",
-      "@typescript-eslint/ban-ts-comment": "off",
-      "monorepo/no-internal-import": "off",
+      ...vitestPlugin.configs.recommended.rules,
+      ...vitestGlobalsPlugin.configs.recommended.rules,
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': 'off',
+      '@typescript-eslint/ban-ts-comment': 'off',
+      'monorepo/no-internal-import': 'off',
     },
-    plugins: ["vitest", "vitest-globals"],
-    env: {
-      "vitest-globals/env": true,
+    languageOptions: {
+      globals: vitestGlobalsPlugin.environments.env.globals,
     },
-  }
+  };
 }
