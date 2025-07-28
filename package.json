@@ -5,6 +5,14 @@
   "main": "dist/main.cjs",
   "module": "dist/main.mjs",
   "types": "types.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/main.mjs",
+      "require": "./dist/main.cjs",
+      "types": "./types.d.ts"
+    },
+    "./all": "./all.js"
+  },
   "files": [
     "dist/**",
     "types.d.ts",

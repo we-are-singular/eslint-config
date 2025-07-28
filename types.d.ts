@@ -33,3 +33,13 @@ export const overrides: {
     config: Omit<Linter.ConfigOverride, "files">
   ) => Linter.ConfigOverride<OverrideRules>
 }
+
+// Default export (for CommonJS compatibility and default imports)
+declare const _default: {
+  presets: typeof presets
+  overrides: typeof overrides
+  config: typeof config
+  extend: typeof extend
+}
+
+export default _default

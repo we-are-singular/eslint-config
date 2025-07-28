@@ -54,4 +54,8 @@ function extend(...args) {
   return config(presets.all, ...args)
 }
 
+// Named exports for ESM compatibility
+export { presets, overrides, config, extend }
+
+// Default export for CommonJS compatibility
 export default { presets, overrides, config, extend }
