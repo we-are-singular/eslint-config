@@ -1,11 +1,20 @@
 import js from "@eslint/js"
 import ts from "typescript-eslint"
+import importPlugin from "eslint-plugin-import"
 
 /**
  * @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.ConfigFile}
  */
 export default [
-  js.configs.recommended,
+  ...ts.config(
+    //
+    js.configs.recommended,
+    importPlugin.flatConfigs.recommended,
+    {
+      files: ["**/*.{ts,tsx}"],
+      extends: [importPlugin.flatConfigs.recommended, importPlugin.flatConfigs.typescript],
+    }
+  ),
   // TypeScript-only configs
   ...ts.configs.recommendedTypeChecked.map((config) => ({
     ...config,
@@ -15,6 +24,13 @@ export default [
     files: ["**/*.{js,jsx,mjs,cjs}"],
     rules: {
       "import/no-anonymous-default-export": "off",
+    },
+  },
+  {
+    files: ["**/*.{js,mjs,cjs}"],
+    languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
     },
   },
   {
