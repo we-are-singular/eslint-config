@@ -32,8 +32,6 @@
     "url": "https://github.com/we-are-singular/eslint-config/issues"
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^8.31.0",
-    "@typescript-eslint/parser": "^8.31.0",
     "eslint": "^9.25.1",
     "eslint-config-next": "15.3.1",
     "eslint-config-prettier": "^10.1.2",
@@ -51,7 +49,9 @@
     "eslint-plugin-vitest": "^0.5.4",
     "eslint-plugin-vitest-globals": "^1.5.0",
     "eslint-plugin-yml": "^1.17.0",
-    "typescript": ">=5"
+    "globals": "^16.3.0",
+    "typescript": ">=5",
+    "typescript-eslint": "^8.38.0"
   },
   "devDependencies": {
     "prettier": "^3.5.3",

@@ -1,21 +1,27 @@
-import reactPlugin from 'eslint-plugin-react';
+import reactPlugin from "eslint-plugin-react"
+import globals from "globals"
 
 /**
  * @type {import('eslint').Linter.Config[]}
  */
 export default [
   {
-    plugins: {
-      react: reactPlugin,
-    },
-    rules: {
-      'react/jsx-key': 'off',
+    files: ["**/*.{jsx,tsx}"],
+    ...reactPlugin.configs.flat.recommended,
+  },
+  {
+    files: ["**/*.{jsx,tsx}"],
+    languageOptions: {
+      globals: {
+        ...globals.serviceworker,
+        ...globals.browser,
+      },
     },
   },
   {
-    files: ['**/*.ts'],
+    files: ["**/*.ts"],
     rules: {
-      'react-hooks/rules-of-hooks': 'off',
+      "react-hooks/rules-of-hooks": "off",
     },
   },
-];
+]

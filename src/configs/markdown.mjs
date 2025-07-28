@@ -1,23 +1,14 @@
-import markdownPlugin from 'eslint-plugin-markdown';
+import markdownPlugin from "eslint-plugin-markdown"
 
 export default [
-    {
-        plugins: {
-            // @ts-ignore
-            markdown: markdownPlugin
-        }
+  markdownPlugin.configs.recommended,
+  {
+    files: ["**/*.md/*"],
+    rules: {
+      "no-undef": "off",
+      "no-unused-vars": "off",
+      "no-console": "off",
+      "import/no-unresolved": "off",
     },
-    {
-        files: ["**/*.md"],
-        processor: "markdown/markdown"
-    },
-    {
-      files: ['**/*.md/*'],
-        rules: {
-          'no-undef': 'off',
-          'no-unused-vars': 'off',
-            "no-console": "off",
-            "import/no-unresolved": "off"
-        }
-    }
+  },
 ]
