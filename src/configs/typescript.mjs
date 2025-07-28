@@ -8,14 +8,20 @@ export default [
   js.configs.recommended,
   ...ts.configs.recommendedTypeChecked,
   {
-    files: ["**/*.{js,jsx,ts,tsx,mjs,cjs}", "*.d.ts"],
+    files: ["**/*.{js,jsx,mjs,cjs}"],
+    rules: {
+      "import/no-anonymous-default-export": "off",
+    },
+  },
+  {
+    files: ["**/*.{ts,tsx}", "**/*.d.ts"],
     languageOptions: {
       parserOptions: {
         projectService: true,
       },
     },
     rules: {
-      "import/no-anonymous-default-export": "off",
+      // Disable base rules that conflict with TypeScript equivalents
       "no-unused-vars": "off",
       "no-empty-function": "off",
       "no-implied-eval": "off",
@@ -23,11 +29,8 @@ export default [
       "require-await": "off",
       "prefer-promise-reject-errors": "off",
       "only-throw-error": "off",
-    },
-  },
-  {
-    files: ["**/*.{ts,tsx}", "**/*.d.ts"],
-    rules: {
+
+      // TypeScript-specific rules
       "@typescript-eslint/require-await": "off",
       "@typescript-eslint/no-var-requires": "off",
       "@typescript-eslint/no-array-constructor": "off",
