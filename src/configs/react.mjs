@@ -8,6 +8,11 @@ export default [
   {
     files: ["**/*.{jsx,tsx}"],
     ...reactPlugin.configs.flat.recommended,
+    settings: {
+      react: {
+        version: "detect",
+      },
+    },
   },
   {
     files: ["**/*.{jsx,tsx}"],
