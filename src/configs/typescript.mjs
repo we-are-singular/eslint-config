@@ -6,9 +6,14 @@ import ts from "typescript-eslint"
  */
 export default [
   js.configs.recommended,
-  ...ts.configs.recommended,
+  ...ts.configs.recommendedTypeChecked,
   {
     files: ["**/*.{js,jsx,ts,tsx,mjs,cjs}", "*.d.ts"],
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+      },
+    },
     rules: {
       "import/no-anonymous-default-export": "off",
       "no-unused-vars": "off",
