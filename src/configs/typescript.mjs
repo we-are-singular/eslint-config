@@ -6,7 +6,11 @@ import ts from "typescript-eslint"
  */
 export default [
   js.configs.recommended,
-  ...ts.configs.recommendedTypeChecked,
+  // TypeScript-only configs
+  ...ts.configs.recommendedTypeChecked.map((config) => ({
+    ...config,
+    files: ["**/*.{ts,tsx}", "**/*.d.ts"],
+  })),
   {
     files: ["**/*.{js,jsx,mjs,cjs}"],
     rules: {
