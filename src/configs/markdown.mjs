@@ -1,7 +1,11 @@
 import markdownPlugin from "eslint-plugin-markdown"
 
+/**
+ * @type {import('eslint').Linter.Config[]}
+ */
 export default [
-  markdownPlugin.configs.recommended,
+  // @ts-ignore because the plugin is badly typed
+  ...markdownPlugin.configs.recommended,
   {
     files: ["**/*.md/*"],
     rules: {
