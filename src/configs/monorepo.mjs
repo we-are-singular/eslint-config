@@ -8,6 +8,14 @@ const monorepoPlugin = require('eslint-plugin-monorepo');
  * @type {import('eslint').Linter.Config[]}
  */
 export default [
-  monorepoPlugin.configs.recommended,
+  {
+    plugins: {
+      monorepo: monorepoPlugin,
+    },
+    rules: {
+      'monorepo/no-internal-import': 'error',
+      'monorepo/no-relative-import': 'error',
+    },
+  },
   ...turboConfig,
 ];
