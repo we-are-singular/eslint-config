@@ -5,7 +5,7 @@ export const presets: {
   monorepo: Linter.Config[]
   prettier: Linter.Config[]
   react: Linter.Config[]
-  storybook: Linter.Config[]
+  mdx: Linter.Config[]
   typescript: Linter.Config[]
   astro: Linter.Config[]
   yaml: Linter.Config[]
@@ -19,10 +19,7 @@ export const overrides: {
     names?: string[],
     overrides?: Record<string, string[]>
   ) => Linter.Config
-  fileNamingConvention: (
-    paths: string[],
-    rules?: Linter.RulesRecord
-  ) => Linter.Config
+  fileNamingConvention: (paths: string[], rules?: Linter.RulesRecord) => Linter.Config
 }
 
 // Default export (for CommonJS compatibility and default imports)

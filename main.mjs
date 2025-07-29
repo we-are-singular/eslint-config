@@ -3,7 +3,7 @@ import markdownConfig from "./src/configs/markdown.mjs"
 import monorepoConfig from "./src/configs/monorepo.mjs"
 import prettierConfig from "./src/configs/prettier.mjs"
 import reactConfig from "./src/configs/react.mjs"
-import storybookConfig from "./src/configs/storybook.mjs"
+import mdxConfig from "./src/configs/mdx.mjs"
 import typescriptConfig from "./src/configs/typescript.mjs"
 import astroConfig from "./src/configs/astro.mjs"
 import yamlConfig from "./src/configs/yaml.mjs"
@@ -14,7 +14,7 @@ const presets = {
   monorepo: monorepoConfig,
   prettier: prettierConfig,
   react: reactConfig,
-  storybook: storybookConfig,
+  mdx: mdxConfig,
   typescript: typescriptConfig,
   astro: astroConfig,
   yaml: yamlConfig,
@@ -31,7 +31,6 @@ const overrides = {
   namingConvention,
   fileNamingConvention,
 }
-
 
 // Named exports for ESM compatibility
 export { presets, overrides }

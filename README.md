@@ -10,6 +10,12 @@ This package provides a shared ESLint configuration for Singular projects, using
 npm install --save-dev @we-are-singular/eslint-config
 ```
 
+### Peer Dependencies
+
+Some configurations require additional peer dependencies to be installed:
+
+- **TypeScript configuration**: Requires `typescript` version 5 or higher
+
 ## Usage
 
 This package now uses ESLint 9's flat config format. The old `.eslintrc.js` format and legacy helpers like `config()` and `extend()` have been removed in favor of the new flat config approach.
@@ -20,10 +26,10 @@ Collection of ESLint config arrays for different technologies:
 
 - `astro` - Configuration for Astro projects
 - `markdown` - Configuration for Markdown files
+- `mdx` - MDX file configuration
 - `monorepo` - Configuration for monorepo projects
 - `prettier` - Prettier integration
 - `react` - React-specific rules
-- `storybook` - Storybook configuration
 - `typescript` - TypeScript configuration
 - `yaml` - YAML file configuration
 
@@ -47,14 +53,14 @@ export default [
   // Apply presets
   ...presets.typescript,
   ...presets.react,
-  
+
   // Add custom rules
   {
     rules: {
       "no-console": "warn",
     },
   },
-  
+
   // Apply overrides for specific file patterns
   overrides.vitestNode(["apps/backend/test/", "packages/logger/test/"]),
 
@@ -78,6 +84,7 @@ If you're migrating from the previous version that used ESLint 8:
 4. **Update file patterns**: Flat configs use different glob patterns (use `**` for recursive matching)
 
 ### Before (ESLint 8)
+
 ```javascript
 // .eslintrc.js
 const { extend, overrides } = require("@we-are-singular/eslint-config")
@@ -89,6 +96,7 @@ module.exports = extend({
 ```
 
 ### After (ESLint 9)
+
 ```javascript
 // eslint.config.js
 import { presets, overrides } from "@we-are-singular/eslint-config"
@@ -100,6 +108,7 @@ export default [
   overrides.vitestNode(["apps/backend/**"]),
 ]
 ```
+
 # Releasing a new version
 
 To release a new version, you need to have access to the `@we-are-singular` npm organization.
