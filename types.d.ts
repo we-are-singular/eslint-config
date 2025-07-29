@@ -9,6 +9,7 @@ export const presets: {
   typescript: Linter.Config[]
   astro: Linter.Config[]
   yaml: Linter.Config[]
+  importer: Linter.Config[]
 }
 
 export const overrides: {

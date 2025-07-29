@@ -7,30 +7,8 @@ import importPlugin from "eslint-plugin-import"
  * @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.ConfigFile}
  */
 export default [
-  ...ts.config(
-    //
-    js.configs.recommended,
-    importPlugin.flatConfigs.recommended,
-    {
-      files: ["**/*.{ts,tsx}"],
-      extends: [importPlugin.flatConfigs.recommended, importPlugin.flatConfigs.typescript],
-      settings: {
-        "import/ignore": ["node_modules", "@astrojs/*"],
-        "import/resolver": {
-          typescript: {
-            alwaysTryTypes: true,
-            project: [
-              //
-              "./tsconfig.json",
-              "./packages/*/tsconfig.json",
-              "./apps/*/tsconfig.json",
-            ],
-          },
-          node: true,
-        },
-      },
-    }
-  ),
+  // Base configs
+  js.configs.recommended,
   // TypeScript-only configs
   ...ts.configs.recommendedTypeChecked.map((config) => ({
     ...config,
@@ -38,16 +16,13 @@ export default [
   })),
   {
     files: ["**/*.{js,jsx,mjs,cjs}"],
-    rules: {
-      "import/no-anonymous-default-export": "off",
-    },
-  },
-  {
-    files: ["**/*.{js,ts,mjs,cjs}"],
     languageOptions: {
       globals: {
         ...globals.node,
       },
+    },
+    rules: {
+      "import/no-anonymous-default-export": "off",
     },
   },
   {
