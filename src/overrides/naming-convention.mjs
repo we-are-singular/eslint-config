@@ -1,4 +1,5 @@
-// ESLint 9+ flat config override for naming convention
+import tsPlugin from "@typescript-eslint/eslint-plugin"
+
 /**
  * Adds very strict variable naming rules.
  * @param {String[]} paths - The options object.
@@ -8,6 +9,9 @@
 export default function (paths, names = [], overrides = {}) {
   return {
     files: paths,
+    plugins: {
+      "@typescript-eslint": tsPlugin,
+    },
     rules: {
       camelcase: "off",
       "@typescript-eslint/naming-convention": [
