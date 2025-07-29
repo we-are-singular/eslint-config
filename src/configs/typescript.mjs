@@ -1,5 +1,6 @@
 import js from "@eslint/js"
 import ts from "typescript-eslint"
+import globals from "globals"
 import importPlugin from "eslint-plugin-import"
 
 /**
@@ -13,6 +14,15 @@ export default [
     {
       files: ["**/*.{ts,tsx}"],
       extends: [importPlugin.flatConfigs.recommended, importPlugin.flatConfigs.typescript],
+      settings: {
+        "import/ignore": ["node_modules", "@astrojs/*"],
+        "import/resolver": {
+          typescript: {
+            // Automatically uses tsconfig.json at project root
+            alwaysTryTypes: true,
+          },
+        },
+      },
     }
   ),
   // TypeScript-only configs
@@ -24,6 +34,14 @@ export default [
     files: ["**/*.{js,jsx,mjs,cjs}"],
     rules: {
       "import/no-anonymous-default-export": "off",
+    },
+  },
+  {
+    files: ["**/*.{js,ts,mjs,cjs}"],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
     },
   },
   {
@@ -118,6 +136,7 @@ export default [
       "@typescript-eslint/no-empty-function": "off",
       "@typescript-eslint/no-non-null-assertion": "off",
       "@typescript-eslint/no-unused-vars": "off",
+      "@typescript-eslint/unbound-method": "off",
 
       // Naming conventions - more flexible for tests
       "@typescript-eslint/naming-convention": "off",
