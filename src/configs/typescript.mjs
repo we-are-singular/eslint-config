@@ -17,19 +17,15 @@ export default [
   {
     files: ["**/*.{js,jsx,mjs,cjs}"],
     languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
       globals: {
+        ...globals.es2024,
         ...globals.node,
       },
     },
     rules: {
       "import/no-anonymous-default-export": "off",
-    },
-  },
-  {
-    files: ["**/*.{js,mjs,cjs}"],
-    languageOptions: {
-      ecmaVersion: "latest",
-      sourceType: "module",
     },
   },
   {
