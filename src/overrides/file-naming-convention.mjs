@@ -4,18 +4,23 @@
  * @param {Object} rules - The rules object to be merged.
  * @returns {Object} - The ESLint configuration object.
  */
-import filenameRulesPlugin from 'eslint-plugin-filename-rules';
+import filenameRulesPluginRules from "eslint-plugin-filename-rules"
 
 export default function (paths, rules = {}) {
+  // Create a proper plugin object for ESLint 9 flat config
+  const filenameRulesPlugin = {
+    rules: filenameRulesPluginRules.rules,
+  }
+
   return {
     files: paths,
     plugins: {
-      'filename-rules': filenameRulesPlugin,
+      "filename-rules": filenameRulesPlugin,
     },
     rules: {
-      'filename-rules/match': [2, /^([a-z]+-)*[a-z]+(?:\..*)?$/],
-      'filename-rules/not-match': [2, 'PascalCase'],
+      "filename-rules/match": ["error", "^([a-z]+-)*[a-z]+(?:\\..*)?$"],
+      "filename-rules/not-match": ["error", "PascalCase"],
       ...rules,
     },
-  };
+  }
 }
