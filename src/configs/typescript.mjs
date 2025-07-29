@@ -91,4 +91,63 @@ export default [
       ],
     },
   },
+  // for test files, some more lax rules
+  {
+    files: [
+      "**/*.{test,spec,unit}.{ts,tsx,js,jsx}",
+      "**/tests/**/*.{ts,tsx,js,jsx}",
+      "**/__tests__/**/*.{ts,tsx,js,jsx}",
+      "**/test/**/*.{ts,tsx,js,jsx}",
+      "**/*.test-d.ts", // for type testing files
+    ],
+    rules: {
+      // Console and debugging
+      "no-console": "off",
+      "no-debugger": "warn", // allow debuggers but still warn
+
+      // TypeScript strict rules - relaxed for testing
+      "@typescript-eslint/no-unsafe-member-access": "off",
+      "@typescript-eslint/no-unsafe-assignment": "off",
+      "@typescript-eslint/no-unsafe-call": "off",
+      "@typescript-eslint/no-unsafe-return": "off",
+      "@typescript-eslint/no-unsafe-argument": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/ban-ts-comment": "off",
+      "@typescript-eslint/no-floating-promises": "off",
+      "@typescript-eslint/no-misused-promises": "off",
+      "@typescript-eslint/no-empty-function": "off",
+      "@typescript-eslint/no-non-null-assertion": "off",
+      "@typescript-eslint/no-unused-vars": "off",
+
+      // Naming conventions - more flexible for tests
+      "@typescript-eslint/naming-convention": "off",
+      camelcase: "off",
+
+      // Import rules - more flexible for test utilities
+      "import/no-unresolved": "off",
+      "import/no-extraneous-dependencies": "off",
+      "import/no-anonymous-default-export": "off",
+
+      // Function and variable rules
+      "no-unused-vars": "off",
+      "no-var": "off",
+      "prefer-const": "warn", // still encourage const but not error
+      "no-magic-numbers": "off",
+
+      // Promise and async rules - more flexible for test scenarios
+      "@typescript-eslint/require-await": "off",
+      "@typescript-eslint/no-unnecessary-type-assertion": "off",
+      "@typescript-eslint/prefer-promise-reject-errors": "off",
+
+      // Object and type rules
+      "@typescript-eslint/no-empty-interface": "off",
+      "@typescript-eslint/consistent-type-definitions": "off",
+      "@typescript-eslint/no-redundant-type-constituents": "off",
+
+      // String and template rules
+      "@typescript-eslint/no-unnecessary-template-expression": "off",
+      "@typescript-eslint/prefer-string-starts-ends-with": "off",
+      "@typescript-eslint/prefer-includes": "off",
+    },
+  },
 ]
