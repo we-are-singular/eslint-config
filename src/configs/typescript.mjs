@@ -18,9 +18,15 @@ export default [
         "import/ignore": ["node_modules", "@astrojs/*"],
         "import/resolver": {
           typescript: {
-            // Automatically uses tsconfig.json at project root
             alwaysTryTypes: true,
+            project: [
+              //
+              "./tsconfig.json",
+              "./packages/*/tsconfig.json",
+              "./apps/*/tsconfig.json",
+            ],
           },
+          node: true,
         },
       },
     }
