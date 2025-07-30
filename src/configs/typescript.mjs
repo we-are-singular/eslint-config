@@ -1,7 +1,7 @@
 import js from "@eslint/js"
 import ts from "typescript-eslint"
 import globals from "globals"
-import importPlugin from "eslint-plugin-import"
+import tsParser from "@typescript-eslint/parser"
 
 /**
  * @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.ConfigFile}
@@ -15,26 +15,26 @@ export default [
     files: ["**/*.{ts,tsx}", "**/*.d.ts"],
   })),
   {
-    files: ["**/*.{js,jsx,mjs,cjs}"],
+    files: ["**/*.{js,mjs,cjs,jsx,ts,tsx}"],
     languageOptions: {
       ecmaVersion: "latest",
       sourceType: "module",
+      parser: tsParser,
+      parserOptions: {
+        projectService: true,
+      },
       globals: {
         ...globals.es2024,
         ...globals.node,
       },
     },
     rules: {
+      "import-x/no-anonymous-default-export": "off",
       "import/no-anonymous-default-export": "off",
     },
   },
   {
     files: ["**/*.{ts,tsx}", "**/*.d.ts"],
-    languageOptions: {
-      parserOptions: {
-        projectService: true,
-      },
-    },
     rules: {
       // Disable base rules that conflict with TypeScript equivalents
       "no-unused-vars": "off",
