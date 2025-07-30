@@ -19,10 +19,6 @@ export default [
     languageOptions: {
       ecmaVersion: "latest",
       sourceType: "module",
-      parser: tsParser,
-      parserOptions: {
-        projectService: true,
-      },
       globals: {
         ...globals.es2024,
         ...globals.node,
@@ -31,6 +27,21 @@ export default [
     rules: {
       "import-x/no-anonymous-default-export": "off",
       "import/no-anonymous-default-export": "off",
+    },
+  },
+  {
+    files: ["**/*.{ts,tsx}"],
+    languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
+      parser: tsParser,
+      parserOptions: {
+        projectService: true,
+      },
+      globals: {
+        ...globals.es2024,
+        ...globals.node,
+      },
     },
   },
   {
