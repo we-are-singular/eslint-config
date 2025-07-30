@@ -8,6 +8,7 @@ import typescriptConfig from "./src/configs/typescript.mjs"
 import astroConfig from "./src/configs/astro.mjs"
 import yamlConfig from "./src/configs/yaml.mjs"
 import importerConfig from "./src/configs/importer.mjs"
+import unicornConfig from "./src/configs/unicorn.mjs"
 
 // eslint presets
 const presets = {
@@ -20,6 +21,7 @@ const presets = {
   astro: astroConfig,
   yaml: yamlConfig,
   importer: importerConfig,
+  unicorn: unicornConfig,
 }
 
 import vitestNode from "./src/overrides/vitest-node.mjs"

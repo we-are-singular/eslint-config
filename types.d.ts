@@ -10,6 +10,7 @@ export const presets: {
   astro: Linter.Config[]
   yaml: Linter.Config[]
   importer: Linter.Config[]
+  unicorn: Linter.Config[]
 }
 
 export const overrides: {
