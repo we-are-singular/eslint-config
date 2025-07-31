@@ -2,6 +2,7 @@ import js from "@eslint/js"
 import ts from "typescript-eslint"
 import globals from "globals"
 import tsParser from "@typescript-eslint/parser"
+import { testFiles } from "../helpers.mjs"
 
 /**
  * @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.ConfigFile}
@@ -99,13 +100,7 @@ export default [
   },
   // for test files, some more lax rules
   {
-    files: [
-      "**/*.{test,spec,unit}.{ts,tsx,js,jsx}",
-      "**/tests/**/*.{ts,tsx,js,jsx}",
-      "**/__tests__/**/*.{ts,tsx,js,jsx}",
-      "**/test/**/*.{ts,tsx,js,jsx}",
-      "**/*.test-d.ts", // for type testing files
-    ],
+    files: testFiles(),
     rules: {
       // Console and debugging
       "no-console": "off",

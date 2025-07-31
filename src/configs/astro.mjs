@@ -1,6 +1,6 @@
-import astroPlugin from 'eslint-plugin-astro';
-import astroParser from 'astro-eslint-parser';
-import tsParser from '@typescript-eslint/parser';
+import astroPlugin from "eslint-plugin-astro"
+import astroParser from "astro-eslint-parser"
+import tsParser from "@typescript-eslint/parser"
 
 /**
  * @type {import('eslint').Linter.Config[]}
@@ -8,27 +8,27 @@ import tsParser from '@typescript-eslint/parser';
 export default [
   ...astroPlugin.configs["flat/recommended"],
   {
-    files: ['**/*.astro'],
+    files: ["**/*.astro"],
     languageOptions: {
       parser: astroParser,
       parserOptions: {
         parser: tsParser,
-        extraFileExtensions: ['.astro'],
+        extraFileExtensions: [".astro"],
       },
     },
     rules: {
-      'prettier/prettier': 'off',
-      'react/no-unknown-property': 'off',
-      'react/prop-types': 'off',
-      'react/react-in-jsx-scope': 'off',
-      'react/jsx-no-undef': 'off',
+      "prettier/prettier": "off",
+      "react/no-unknown-property": "off",
+      "react/prop-types": "off",
+      "react/react-in-jsx-scope": "off",
+      "react/jsx-no-undef": "off",
     },
     settings: {
       linterOptions: {
         globals: {
           astroHTML: true,
         },
-      }
+      },
     },
   },
 ]
