@@ -14,6 +14,7 @@ export default [
       parserOptions: {
         parser: tsParser,
         extraFileExtensions: [".astro"],
+        project: null, // Disable project for performance
       },
     },
     rules: {
@@ -29,6 +30,41 @@ export default [
           astroHTML: true,
         },
       },
+    },
+  },
+  // Recommended: Disable rules and set env/parserOptions for embedded scripts in .astro files for performance
+  {
+    files: ["**/*.astro/*.js", "*.astro/*.js"],
+    languageOptions: {
+      ecmaVersion: 2020,
+      sourceType: "module",
+      globals: {
+        window: "readonly",
+        document: "readonly",
+      },
+    },
+    rules: {
+      "prettier/prettier": "off",
+      // Add any other rules you want to disable for embedded JS scripts
+    },
+  },
+  {
+    files: ["**/*.astro/*.ts", "*.astro/*.ts"],
+    languageOptions: {
+      ecmaVersion: 2020,
+      sourceType: "module",
+      globals: {
+        window: "readonly",
+        document: "readonly",
+      },
+      parser: tsParser,
+      parserOptions: {
+        project: null, // Disable project for performance
+      },
+    },
+    rules: {
+      "prettier/prettier": "off",
+      // Add any other rules you want to disable for embedded TS scripts
     },
   },
 ]
