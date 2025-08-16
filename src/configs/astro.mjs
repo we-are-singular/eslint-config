@@ -1,6 +1,7 @@
 import astroPlugin from "eslint-plugin-astro"
 import astroParser from "astro-eslint-parser"
 import tsParser from "@typescript-eslint/parser"
+import ts from "typescript-eslint"
 
 /**
  * @type {import('eslint').Linter.Config[]}
@@ -14,7 +15,7 @@ export default [
       parserOptions: {
         parser: tsParser,
         extraFileExtensions: [".astro"],
-        project: null, // Disable project for performance
+        project: null, // Disable TypeScript project for embedded scripts
       },
     },
     rules: {
@@ -24,47 +25,39 @@ export default [
       "react/react-in-jsx-scope": "off",
       "react/jsx-no-undef": "off",
     },
-    settings: {
-      linterOptions: {
-        globals: {
-          astroHTML: true,
-        },
-      },
-    },
   },
-  // Recommended: Disable rules and set env/parserOptions for embedded scripts in .astro files for performance
+
+  // Configuration for embedded TypeScript/JavaScript scripts in Astro files
   {
-    files: ["**/*.astro/*.js", "*.astro/*.js"],
+    files: ["**/*.astro/*.ts", "**/*.astro/*.js"],
     languageOptions: {
-      ecmaVersion: 2020,
-      sourceType: "module",
-      globals: {
-        window: "readonly",
-        document: "readonly",
-      },
-    },
-    rules: {
-      "prettier/prettier": "off",
-      // Add any other rules you want to disable for embedded JS scripts
-    },
-  },
-  {
-    files: ["**/*.astro/*.ts", "*.astro/*.ts"],
-    languageOptions: {
-      ecmaVersion: 2020,
-      sourceType: "module",
-      globals: {
-        window: "readonly",
-        document: "readonly",
-      },
       parser: tsParser,
       parserOptions: {
-        project: null, // Disable project for performance
+        project: null,
+        projectService: false, // Explicitly disable project service
+      },
+      ecmaVersion: 2022,
+      sourceType: "module",
+      globals: {
+        window: "readonly",
+        document: "readonly",
+        console: "readonly",
       },
     },
     rules: {
+      // Disable all type-aware rules for embedded scripts
+      ...ts.configs.disableTypeChecked.rules,
+
+      // Disable formatting and React rules
       "prettier/prettier": "off",
-      // Add any other rules you want to disable for embedded TS scripts
+      "react/no-unknown-property": "off",
+      "react/prop-types": "off",
+      "react/react-in-jsx-scope": "off",
+      "react/jsx-no-undef": "off",
+
+      // Keep basic linting but disable problematic ones
+      "@typescript-eslint/no-unused-vars": "warn",
+      "no-console": "off", // Allow console in scripts
     },
   },
 ]
