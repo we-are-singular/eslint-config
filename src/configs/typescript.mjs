@@ -88,6 +88,15 @@ export default [
       "@typescript-eslint/no-empty-interface": "warn",
       "@typescript-eslint/no-confusing-non-null-assertion": "warn",
       "@typescript-eslint/no-redundant-type-constituents": "warn",
+      // more relaxed extra safety rules
+      "@typescript-eslint/no-unused-expressions": "warn",
+      "@typescript-eslint/no-unnecessary-type-assertion": "warn",
+      "@typescript-eslint/no-constant-binary-expression": "off",
+      "@typescript-eslint/no-unsafe-argument": "off",
+      "@typescript-eslint/no-unsafe-assignment": "off",
+      "@typescript-eslint/no-unsafe-return": "off",
+      "@typescript-eslint/no-unsafe-call": "off",
+      "@typescript-eslint/no-unsafe-member-access": "off",
       "@typescript-eslint/no-unused-vars": [
         "warn",
         {
