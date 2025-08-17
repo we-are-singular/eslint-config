@@ -139,7 +139,10 @@ export default [
     ...config,
     files: ["**/*.{ts,tsx}", " **/*.d.ts"],
     ignores: [...testFiles(), "**/*.astro/*.ts", "**/*.astro/*.js"],
-    rules: RULES,
+    rules: {
+      ...config.rules,
+      ...RULES,
+    },
   })),
 
   // Test files configuration
@@ -147,6 +150,7 @@ export default [
     ...config,
     files: testFiles(),
     rules: {
+      ...config.rules,
       ...RULES,
       ...TEST_RULES,
     },
