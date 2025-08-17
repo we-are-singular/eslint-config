@@ -10,6 +10,8 @@ import { testFiles } from "../helpers.mjs"
  */
 const RULES = {
   // Disable base rules that conflict with TypeScript equivalents
+  "no-undef": "off",
+  "no-redeclare": "off",
   "no-unused-vars": "off",
   "no-empty-function": "off",
   "no-implied-eval": "off",
@@ -19,6 +21,7 @@ const RULES = {
   "only-throw-error": "off",
 
   // TypeScript-specific rules
+  "@typescript-eslint/no-redeclare": ["error", { ignoreDeclarationMerge: true }],
   "@typescript-eslint/require-await": "off",
   "@typescript-eslint/no-var-requires": "off",
   "@typescript-eslint/no-array-constructor": "off",
@@ -53,7 +56,7 @@ const RULES = {
   "@typescript-eslint/no-unused-expressions": "warn",
   "@typescript-eslint/no-unnecessary-type-assertion": "warn",
   "@typescript-eslint/restrict-template-expressions": "off",
-  "@typescript-eslint/unbound-method": ["error", { ignoreStatic: false }],
+  "@typescript-eslint/unbound-method": ["error", { ignoreStatic: true }],
   "@typescript-eslint/no-constant-binary-expression": "off",
   "@typescript-eslint/no-unsafe-argument": "off",
   "@typescript-eslint/no-unsafe-assignment": "off",
@@ -134,8 +137,8 @@ export default [
   // TypeScript-only configs
   ...ts.configs.recommendedTypeChecked.map((config) => ({
     ...config,
-    files: ["**/*.{ts,tsx}", "**/*.d.ts"],
-    ignores: testFiles(),
+    files: ["**/*.{ts,tsx}", " **/*.d.ts"],
+    ignores: [...testFiles(), "**/*.astro/*.ts", "**/*.astro/*.js"],
     rules: RULES,
   })),
 
@@ -165,7 +168,18 @@ export default [
     },
   },
   {
-    files: ["**/*.{ts,tsx}"],
+    files: ["**/*.ts"],
+    languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
+      parser: tsParser,
+      parserOptions: {
+        projectService: true,
+      },
+    },
+  },
+  {
+    files: ["**/*.tsx"],
     languageOptions: {
       ecmaVersion: "latest",
       sourceType: "module",
@@ -175,7 +189,8 @@ export default [
       },
       globals: {
         ...globals.es2024,
-        ...globals.node,
+        ...globals.serviceworker,
+        ...globals.browser,
       },
     },
   },
