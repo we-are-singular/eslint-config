@@ -6,7 +6,10 @@ export default [
   eslintPluginUnicorn.configs.recommended,
   // custom rules or overrides:
   {
+    ...eslintPluginUnicorn.configs.recommended,
+    ignores: testFiles(),
     rules: {
+      ...eslintPluginUnicorn.configs.recommended.rules,
       "unicorn/better-regex": "warn",
       "unicorn/no-negated-condition": "off",
       "unicorn/no-null": "off",
@@ -26,9 +29,5 @@ export default [
       "unicorn/prefer-global-this": "off",
       "unicorn/prefer-module": "off",
     },
-  },
-  {
-    files: testFiles(),
-    plugins: { unicorn: "off" }, // Disable all unicorn rules for test files
   },
 ]
