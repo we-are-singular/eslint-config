@@ -6,13 +6,6 @@ import markdownPlugin from "eslint-plugin-markdown"
 export default [
   // @ts-ignore because the plugin is badly typed
   ...markdownPlugin.configs.recommended,
-  {
-    files: ["**/*.md/*"],
-    rules: {
-      "no-undef": "off",
-      "no-unused-vars": "off",
-      "no-console": "off",
-      "import/no-unresolved": "off",
-    },
-  },
+  // ignore markdown embedded scripts
+  { ignores: ["**/*.md/*.ts", "**/*.md/*.js"] },
 ]
